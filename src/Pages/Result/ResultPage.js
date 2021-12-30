@@ -28,15 +28,17 @@ const ResultPage = (props) => {
 			</Left>
 			<Right>
 				<SearchBar searchKey={searchKey} />
-				<ResultWrapper>
-					<OrderByContainer>
-						<OrderButton orderCallback={handleOrderTypeChange} />
-					</OrderByContainer>
-					<SearchResult
-						data={data.slice(page === 1 ? 0 : (page - 1) * 6, (page - 1) * 6 + 6)}
-						forPage={true}
-					/>
-				</ResultWrapper>
+				{data.length > 0 && (
+					<ResultWrapper>
+						<OrderByContainer>
+							<OrderButton orderCallback={handleOrderTypeChange} />
+						</OrderByContainer>
+						<SearchResult
+							data={data.slice(page === 1 ? 0 : (page - 1) * 6, (page - 1) * 6 + 6)}
+							forPage={true}
+						/>
+					</ResultWrapper>
+				)}
 				<PageNumbers totalPage={Math.ceil(data.length / 6)} page={page} callback={setPage} />
 			</Right>
 		</Container>
