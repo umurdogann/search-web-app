@@ -4,13 +4,13 @@ export const Container = styled.div`
 	width: 100%;
 	height: 100vh;
 	display: flex;
-	align-items: center;
 	justify-content: center;
 	padding-bottom: 152px;
 	box-sizing: border-box;
 `;
 
 export const Wrapper = styled.div`
+	margin-top: 237px;
 	width: 50vw;
 	height: fit-content;
 	display: flex;
