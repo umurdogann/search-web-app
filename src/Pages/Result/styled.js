@@ -40,6 +40,7 @@ export const OrderByContainer = styled.div`
 
 export const ResultWrapper = styled.div`
 	width: 100%;
+	min-height: 60vh;
 	display: flex;
 	flex-direction: column;
 	gap: 10px;
