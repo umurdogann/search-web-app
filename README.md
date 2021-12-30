@@ -1,13 +1,11 @@
 # Web Search App
 
-This is an app built with React, and you can access the live demo [HERE](https://web-search-app-cud.netlify.app/)
-
+This is an app built with React, and you can access the [LIVE DEMO HERE](https://web-search-app-cud.netlify.app/)
 &nbsp;
 
 # Objective and Outline
 
 You can access the objectives and outlines of this project [HERE](https://drive.google.com/file/d/1zlLAqVDAUyIjglnchIU77ejlCC3WmFYt/view)
-
 &nbsp;
 
 # How to run?
