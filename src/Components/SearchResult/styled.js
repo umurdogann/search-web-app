@@ -32,7 +32,7 @@ export const Hr = styled.div`
 `;
 
 export const TopRow = styled.div`
-	width: ${(props) => (props.forPage ? '75%' : '100%')};
+	width: ${(props) => (props.forPage ? '100%' : '100%')};
 	display: flex;
 	flex-direction: row;
 	align-items: center;

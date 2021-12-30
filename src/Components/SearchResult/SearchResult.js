@@ -1,28 +1,38 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Container, Hr, LocationText, MailText, MoreButton, NameText, ResultContainer, TopRow } from './styled';
 
 const Result = (props) => {
+	const { forPage, data } = props;
 	return (
 		<ResultContainer>
-			<TopRow forPage={props.forPage}>
-				<LocationText>Turkey - Ankara</LocationText>
-				<MailText>umurdogann@gmail.com</MailText>
+			<TopRow forPage={forPage}>
+				<LocationText>{data[4] + ' - ' + data[5]}</LocationText>
+				<MailText>{data[2]}</MailText>
 			</TopRow>
-			<NameText>Umur Dogan-2016</NameText>
+			<NameText>{data[0] + ' - ' + data[3].split('/')[2]}</NameText>
 			<Hr />
 		</ResultContainer>
 	);
 };
 
 const SearchResult = (props) => {
-	const { forPage } = props;
+	const { forPage, data, searchText } = props;
+	const navigate = useNavigate();
+	const handleClick = () => {
+		navigate('/result/' + searchText);
+	};
 	return (
-		<Container forPage={forPage}>
-			<Result forPage={forPage} />
-			<Result forPage={forPage} />
-			<Result forPage={forPage} />
-			{!forPage && <MoreButton>Show More</MoreButton>}
-		</Container>
+		<>
+			{data && data.length > 0 && (
+				<Container forPage={forPage}>
+					{data.map((result, index) => (
+						<Result forPage={forPage} data={result} key={index} />
+					))}
+					{!forPage && data && data.length > 2 && <MoreButton onClick={handleClick}>Show More</MoreButton>}
+				</Container>
+			)}
+		</>
 	);
 };
 
