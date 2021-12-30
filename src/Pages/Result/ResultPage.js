@@ -27,7 +27,7 @@ const ResultPage = (props) => {
 				<Logo src={logo} />
 			</Left>
 			<Right>
-				<SearchBar searchKey={searchKey} />
+				<SearchBar notFound={data.length === 0} searchKey={searchKey} />
 				{data.length > 0 && (
 					<ResultWrapper>
 						<OrderByContainer>

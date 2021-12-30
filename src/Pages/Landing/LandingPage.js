@@ -23,7 +23,7 @@ const LandingPage = () => {
 					<LogoText>Search web app</LogoText>
 				</LogoSection>
 				<SearchSection>
-					<SearchBar callback={searchBarOnChange} />
+					<SearchBar notFound={(!!searchText&&!filteredData.length)} callback={searchBarOnChange} />
 				</SearchSection>
 				<ResultSection>
 					<SearchResult searchText={searchText} data={filteredData ? [...filteredData].slice(0, 3) : null} />
