@@ -4,30 +4,42 @@ import OrderIcon from '../../Images/OrderIcon.svg';
 
 const Popup = (props) => {
 	const ref = useRef();
-
+	const options = ['Name ascending', 'Name descending', 'Year ascending', 'Year descending'];
+	const [selected, setSelected] = useState('Name ascending');
+	const { callback, orderCallback } = props;
 	useEffect(() => {
-		document.addEventListener('click', handleClick);
-		return () => document.removeEventListener('click', handleClick);
+		document.addEventListener('click', handleOutsideClick);
+		return () => document.removeEventListener('click', handleOutsideClick);
 	});
 
-	function handleClick(e) {
+	const handleOutsideClick = (e) => {
 		if (ref && ref.current) {
 			if (!ref.current.contains(e.target)) {
-				props.callback();
+				callback();
 			}
 		}
-	}
+	};
+
+	const handleOptionClick = (option) => {
+		if (option !== selected) setSelected(option);
+		orderCallback(option);
+	};
+
 	return (
 		<PopupContainer ref={ref}>
-			<Option selected={true}>Name ascending</Option>
-			<Option>Name descending</Option>
-			<Option>Year ascending</Option>
-			<Option>Name descending</Option>
+			{options.map((option, index) => {
+				return (
+					<Option key={index} onClick={() => handleOptionClick(option)} selected={option === selected}>
+						{option}
+					</Option>
+				);
+			})}
 		</PopupContainer>
 	);
 };
 
-const OrderButton = () => {
+const OrderButton = (props) => {
+	const { orderCallback } = props;
 	const [showPopup, setShowPopup] = useState(false);
 
 	return (
@@ -36,6 +48,7 @@ const OrderButton = () => {
 			<Text>Order By</Text>
 			{showPopup && (
 				<Popup
+					orderCallback={orderCallback}
 					callback={() => {
 						setShowPopup(false);
 					}}
