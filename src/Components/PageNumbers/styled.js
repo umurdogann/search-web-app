@@ -12,6 +12,7 @@ export const Button = styled.button`
 	border: 1px solid ${(props) => (props.selecteD ? '#204080' : '#484848')};
 	border-radius: 4px;
 	font-size: 14px;
+	min-width: 30px;
 	font-weight: 700;
 	background-color: ${(props) => (props.selected ? '#204080' : '#FFF')};
 	color: ${(props) => (props.selected ? '#FFF' : '#484848')};
@@ -27,6 +28,11 @@ export const Button = styled.button`
         background-color: #4F75C2;
         color: #fff;
         `}
+	}
+	&:disabled {
+		background-color: lightgray;
+		color: white;
+		cursor: not-allowed;
 	}
 `;
 
