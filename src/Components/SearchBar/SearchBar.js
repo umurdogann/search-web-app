@@ -10,7 +10,7 @@ const SearchBar = (props) => {
 		setText(e.target.value);
 	};
 	const handleClick = () => {
-		navigate('/result/' + text);
+		text !== '' && navigate('/result/' + text);
 	};
 	return (
 		<Container>
